@@ -10,6 +10,7 @@ Python module for interacting with ArkoseLabs' FunCaptcha
 ```bash
 sudo apt install nodejs
 pip3 install -r requirements.txt
+# on windows machines you'll also have to install the module pycryptodome
 ```
 
 
@@ -23,20 +24,18 @@ s = FunCaptchaSession(
     public_key="9F35E182-C93C-EBCC-A31D-CF8ED317B996",
     service_url="https://roblox-api.arkoselabs.com",
     page_url="https://www.roblox.com/login",
-    proxy="https://127.0.0.1:8888")
+    proxy="https://127.0.0.1:8888",
+    download_image=True)
 ## Obtain challenge
 ch = s.new_challenge()
 
 ## Print challenge details
 print("Full Token ::", ch.full_token)
-print("Session Token ::", ch.session_token)
-print("Challenge Token ::", ch.token)
-print("# of Images ::", len(ch.image_urls))
+print("Number of Images ::", len(ch.image_urls))
 
 ## Iterate over challenge images
+## image is PIL.Image object
 for image, submit in ch.get_iter():
-    ## Display image using PIL's image.show() method
-    image.show()
     ## Generate random guess
     guess = ch.angle * randint(1, 360/ch.angle)
     ## Submit guess
