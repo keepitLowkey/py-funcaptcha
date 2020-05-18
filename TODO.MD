@@ -1,5 +1,0 @@
-- Add user_agent parameter to FunCaptchaSession
-- Implement X-NewRelic-Timestamp header
-- Implement X-Requested-With header
-- Implement timestamp cookie
-- Implement Sec-Fetch-* headers if user agent is chrome

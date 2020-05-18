@@ -106,8 +106,7 @@ class FunCaptchaChallenge():
         self.lang = lang
         self.analytics_tier = analytics_tier
         self.download_images = download_images
-        self.send_analytics(render_type="canvas", sid=self.region, category="Site URL", analytics_tier=self.analytics_tier,
-                            session_token=self.session_token, action=self.session.page_url)
+        self.send_analytics(render_type="canvas", sid=self.region, category="Site URL", analytics_tier=self.analytics_tier, session_token=self.session_token, action=self.session.page_url)
         self.reload(status="init")
 
     
@@ -142,18 +141,15 @@ class FunCaptchaChallenge():
             if self.download_images:
                 self.images = list(map(self.download_image, self.image_urls))
             
-            self.send_analytics(render_type="canvas", sid=self.region, category="loaded", game_token=self.token,
-                                analytics_tier=self.analytics_tier, game_type=1, session_token=self.session_token, action="game loaded")
+            self.send_analytics(render_type="canvas", sid=self.region, category="loaded", game_token=self.token, analytics_tier=self.analytics_tier, game_type=1, session_token=self.session_token, action="game loaded")
     
             ## Get encryption key, if needed
             if self.encrypted_mode:
                 self.key = self.get_encryption_key()
-            
-            self.send_analytics(render_type="canvas", sid=self.region, category="begin app", game_token=self.token,
-                                analytics_tier=self.analytics_tier, game_type=1, session_token=self.session_token, action="user clicked verify")
+                self.send_analytics(render_type="canvas", sid=self.region, category="begin app", game_token=self.token, analytics_tier=self.analytics_tier, game_type=1, session_token=self.session_token, action="user clicked verify")
 
 
-    ## This is some sort of weird metadata that's sent encrypted in
+    ## This is some sort of weird metadata that's sent in
     ## the X-Requested-ID header
     def update_metadata(self, origin, value=None):
         if origin == "ekey" and not self.metadata.get("sc"):
