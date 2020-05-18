@@ -30,7 +30,7 @@ for image, submit in ch.get_iter():
     ## Display image using PIL's image.show() method
     image.show()
     ## Generate random guess
-    guess = ch.angle * randint(1, 6)
+    guess = ch.angle * randint(1, 360/ch.angle)
     ## Submit guess
     solved = submit(guess)
 
