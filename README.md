@@ -8,6 +8,7 @@ Python module for interacting with ArkoseLabs' FunCaptcha
 ### Usage
 ```python
 from py_funcaptcha import FunCaptchaSession
+from random import randint
 
 ## Create session for Roblox's login endpoint
 s = FunCaptchaSession(
@@ -29,7 +30,7 @@ for image, submit in ch.get_iter():
     ## Display image using PIL's image.show() method
     image.show()
     ## Submit guess
-    solved = submit(51.4)
+    solved = submit(51.4 * randint(1, 6))
 
 ## Print final result
 print("Solved ::", solved)
