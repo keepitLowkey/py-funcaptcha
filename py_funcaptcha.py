@@ -23,10 +23,10 @@ DEFAULT_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/2
 ## Turning this off improves speed
 PROXY_IMAGE_DOWNLOADS = False
 
+
 ## Load .js module for murmur3 related functions (used in BDA/fingerprint2 generation)
 with open("fp.js") as f:
-    js_source = f.read()
-    mm3js = execjs.compile(js_source)
+    mm3js = execjs.compile(f.read())
 
 
 ## Create dict of fields from full token string
