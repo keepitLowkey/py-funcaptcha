@@ -5,6 +5,15 @@ Python module for interacting with ArkoseLabs' FunCaptcha
 - `<ch>.full_token` is the token you submit to the website once you solved the challenge
 - ArkoseLabs may enable the verification of IP addresses on your target website at any given time, thus requiring you to submit the token from the same IP address you solved it from
 
+
+### Setup
+```bash
+sudo apt install nodejs
+pip3 install pyexecjs
+pip3 install pillow
+```
+
+
 ### Usage
 ```python
 from py_funcaptcha import FunCaptchaSession
