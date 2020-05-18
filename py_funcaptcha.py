@@ -302,7 +302,7 @@ class FunCaptchaSession:
         ## Fingerprint
         fonts = "Arial,Arial Black,Arial Narrow,Book Antiqua,Bookman Old Style,Calibri,Cambria,Cambria Math,Century,Century Gothic,Century Schoolbook,Comic Sans MS,Consolas,Courier,Courier New,Garamond,Georgia,Helvetica,Impact,Lucida Bright,Lucida Calligraphy,Lucida Console,Lucida Fax,Lucida Handwriting,Lucida Sans,Lucida Sans Typewriter,Lucida Sans Unicode,Microsoft Sans Serif,Monotype Corsiva,MS Gothic,MS PGothic,MS Reference Sans Serif,MS Sans Serif,MS Serif,Palatino Linotype,Segoe Print,Segoe Script,Segoe UI,Segoe UI Light,Segoe UI Semibold,Segoe UI Symbol,Tahoma,Times,Times New Roman,Trebuchet MS,Verdana,Wingdings,Wingdings 2,Wingdings 3".split(",")
         plugins = "Chrome PDF Plugin,Chrome PDF Viewer,Native Client".split(",")
-        canvas = -1424337346
+        canvas_fp = -1424337346
 
         fe = [
             ## DoNotTrack flag
@@ -334,7 +334,7 @@ class FunCaptchaSession:
             ## Platform key
             "PK:Win32",
             ## Canvas fingerprint
-            "CFP:" + str(canvas),
+            "CFP:" + str(canvas_fp),
             ## Has fake resolution
             "FR:false",
             ## Has fake OS
@@ -351,10 +351,14 @@ class FunCaptchaSession:
             "H:8",
             ## Flash enabled
             "SWF:false"]
+        
+        ## Calculate hashes
+        ## I haven't managed to replicate fp hashes yet, so it's just filled with a random value for now
         fp = secrets.token_hex(16)
         ife_hash = mm3js.call("x64hash128", ", ".join(fe), 38)
 
         ## Window hash
+        ## This cannot be verified by the server, so it's just a random value for now
         wh = secrets.token_hex(16) + "|" + secrets.token_hex(16)
         
         ## Additional data
