@@ -3,6 +3,8 @@ Python module for interacting with ArkoseLabs' FunCaptcha
 
 ### Usage
 ```python
+from py_funcaptcha import FunCaptchaSession
+
 ## Create session for Roblox's login endpoint
 s = FunCaptchaSession(
     public_key="9F35E182-C93C-EBCC-A31D-CF8ED317B996",
