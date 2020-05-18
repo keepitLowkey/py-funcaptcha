@@ -300,9 +300,57 @@ class FunCaptchaSession:
         data.append({"key": "p", "value": 1})
 
         ## Fingerprint
+        fonts = "Arial,Arial Black,Arial Narrow,Book Antiqua,Bookman Old Style,Calibri,Cambria,Cambria Math,Century,Century Gothic,Century Schoolbook,Comic Sans MS,Consolas,Courier,Courier New,Garamond,Georgia,Helvetica,Impact,Lucida Bright,Lucida Calligraphy,Lucida Console,Lucida Fax,Lucida Handwriting,Lucida Sans,Lucida Sans Typewriter,Lucida Sans Unicode,Microsoft Sans Serif,Monotype Corsiva,MS Gothic,MS PGothic,MS Reference Sans Serif,MS Sans Serif,MS Serif,Palatino Linotype,Segoe Print,Segoe Script,Segoe UI,Segoe UI Light,Segoe UI Semibold,Segoe UI Symbol,Tahoma,Times,Times New Roman,Trebuchet MS,Verdana,Wingdings,Wingdings 2,Wingdings 3".split(",")
+        plugins = "Chrome PDF Plugin,Chrome PDF Viewer,Native Client".split(",")
         canvas = -1424337346
-        font_names = "Arial,Arial Black,Arial Narrow,Book Antiqua,Bookman Old Style,Calibri,Cambria,Cambria Math,Century,Century Gothic,Century Schoolbook,Comic Sans MS,Consolas,Courier,Courier New,Garamond,Georgia,Helvetica,Impact,Lucida Bright,Lucida Calligraphy,Lucida Console,Lucida Fax,Lucida Handwriting,Lucida Sans,Lucida Sans Typewriter,Lucida Sans Unicode,Microsoft Sans Serif,Monotype Corsiva,MS Gothic,MS PGothic,MS Reference Sans Serif,MS Sans Serif,MS Serif,Palatino Linotype,Segoe Print,Segoe Script,Segoe UI,Segoe UI Light,Segoe UI Semibold,Segoe UI Symbol,Tahoma,Times,Times New Roman,Trebuchet MS,Verdana,Wingdings,Wingdings 2,Wingdings 3".split(",")
-        fe = ["DNT:unknown","L:en-US","D:24","PR:1","S:1920,1080","AS:1920,1040","TO:-120","SS:true","LS:true","IDB:true","B:false","ODB:true","CPUC:unknown","PK:Win32",f"CFP:{canvas}","FR:false","FOS:false","FB:false","JSF:" + ",".join(font_names),"P:Chrome PDF Plugin,Chrome PDF Viewer,Native Client","T:0,false,false","H:8","SWF:false"]
+
+        fe = [
+            ## DoNotTrack flag
+            "DNT:unknown",
+            ## Language
+            "L:en-US",
+            ## Depth
+            "D:24",
+            ## Pixel ratio
+            "PR:1",
+            ## Screen resolution
+            "S:1920,1080",
+            ## Available screen resolution (browser window size)
+            "AS:1920,1040",
+            ## Time offset
+            "TO:-120",
+            ## Session storage enabled
+            "SS:true",
+            ## Local storage enabled
+            "LS:true",
+            ## Indexed DB enabled
+            "IDB:true",
+            ## .addBehaviour enabled - https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms535922(v%3Dvs.85)
+            "B:false",
+            ## OpenDB enabled
+            "ODB:true",
+            ## CPU class
+            "CPUC:unknown",
+            ## Platform key
+            "PK:Win32",
+            ## Canvas fingerprint
+            "CFP:" + str(canvas),
+            ## Has fake resolution
+            "FR:false",
+            ## Has fake OS
+            "FOS:false",
+            ## Has fake browser
+            "FB:false",
+            ## Javascript fonts
+            "JSF:" + ",".join(fonts),
+            ## Plugin keys
+            "P:" + ",".join(plugins),
+            ## Touch
+            "T:0,false,false",
+            ## navigator.hardwareConcurrency enabled
+            "H:8",
+            ## Flash enabled
+            "SWF:false"]
         fp = secrets.token_hex(16)
         ife_hash = mm3js.call("x64hash128", ", ".join(fe), 38)
 
