@@ -9,8 +9,7 @@ Python module for interacting with ArkoseLabs' FunCaptcha
 ### Setup
 ```bash
 sudo apt install nodejs
-pip3 install pyexecjs
-pip3 install pillow
+pip3 install -r requirements.txt
 ```
 
 
