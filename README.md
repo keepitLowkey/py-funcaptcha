@@ -10,6 +10,7 @@ Python module for interacting with ArkoseLabs' FunCaptcha
 ```bash
 sudo apt install nodejs
 pip3 install -r requirements.txt
+# on windows machines you'll also have to install the module pycryptodome
 ```
 
 
