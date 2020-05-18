@@ -347,7 +347,7 @@ class FunCaptchaSession:
             "P:" + ",".join(plugins),
             ## Touch
             "T:0,false,false",
-            ## navigator.hardwareConcurrency enabled
+            ## navigator.hardwareConcurrency value
             "H:8",
             ## Flash enabled
             "SWF:false"]
