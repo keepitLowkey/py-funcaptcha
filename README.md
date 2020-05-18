@@ -29,8 +29,10 @@ print("# of Images ::", len(ch.image_urls))
 for image, submit in ch.get_iter():
     ## Display image using PIL's image.show() method
     image.show()
+    ## Generate random guess
+    guess = ch.angle * randint(1, 6)
     ## Submit guess
-    solved = submit(51.4 * randint(1, 6))
+    solved = submit(guess)
 
 ## Print final result
 print("Solved ::", solved)
